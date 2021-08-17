@@ -25,7 +25,7 @@ public class UserController {
     @GetMapping("/{userId}")
     public User getUser(@PathVariable("userId") Long userId) {
         User user = this.userService.getUser(userId);
-        List<Contract> contracts = this.restTemplate.getForObject("http://contact-service:9002/contact/  user/" + user.getUserId()  , List.class);
+        List<Contract> contracts = this.restTemplate.getForObject("http://contact-service:9002/contact/user/" + user.getUserId()  , List.class);
         user.setContacts(contracts);
         return(user);
     }
